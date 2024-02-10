@@ -1,0 +1,8 @@
+node_modules/
+build/
+dist/
+.cache/
+
+task.md
+package-lock.json
+package.json

@@ -1,0 +1,142 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "main";
+  src: url(../fonts/RobotoMono-VariableFont_wght.ttf);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  font-family: "main";
+  background-color: mintcream;
+}
+body #root {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  font-family: main;
+  grid-template-rows: 100px 1fr 100px;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+body #root header, body #root footer {
+  background-color: chartreuse;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+body #root header {
+  border-radius: 0 0 15px 15px;
+}
+body #root footer {
+  border-radius: 15px 15px 0 0;
+}
+body #root main {
+  width: 100%;
+  height: 100%;
+  background-color: chocolate;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+body #root main .finder {
+  padding: 50px;
+  width: inherit;
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+}
+body #root main .finder .search-bar {
+  width: inherit;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+body #root main .finder .search-bar input {
+  border-width: 2px 0 2px 2px;
+  border-color: #793c11;
+  border-style: solid;
+  width: 30%;
+  height: 40px;
+  border-radius: 15px 0 0 15px;
+}
+body #root main .finder .search-bar input:focus {
+  outline: none;
+}
+body #root main .finder .search-bar button {
+  border-width: 2px 2px 2px 0;
+  border-color: #793c11;
+  border-style: solid;
+  position: relative;
+  background-color: #793c11;
+  color: mintcream;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: 0.5s;
+  border-radius: 0 15px 15px 0;
+}
+body #root main .finder .search-bar button:hover {
+  background-color: #eaa16c;
+  color: black;
+}
+body #root main .finder .search-bar button::before {
+  content: "→";
+  position: absolute;
+  transform: translateY(-50%);
+  top: 45%;
+  right: 25%;
+  font-size: 18px;
+}
+body #root main .finder .search-bar input, body #root main .finder .search-bar button {
+  padding: 5px;
+}
+body #root main .finder .info {
+  width: inherit;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+body #root main .finder .info .info-block {
+  width: 20%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+body #root main .finder .info .info-block .subtitle {
+  font-weight: bold;
+  font-size: 28px;
+  color: #793c11;
+}
+body #root main .finder .info .info-block .title {
+  font-weight: bolder;
+  font-size: 20px;
+  color: mintcream;
+}
+body #root main .finder .info .sepr {
+  height: 100%;
+  width: 2px;
+  background-color: #793c11;
+}/*# sourceMappingURL=style.css.map */

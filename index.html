@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/css/style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/main_ico.png">
+    <title>IP Address Tracker</title>
+</head>
+<body>
+    <div id="root">
+        <header><h1>IP Address Tracker</h1></header>
+        <main>
+            <div class="finder">
+                <div class="search-bar">
+                    <input type="text" name="ip" placeholder="Search for any IP address or domain">
+                    <button class="search-bar-btn"></button>
+                </div>
+
+                <div class="info">
+                    <div class="info-block">
+                        <div class="subtitle">IP Address</div>
+                        <div class="title" id="ip">test</div>
+                    </div>
+                    <div class="sepr"></div>
+                    <div class="info-block">
+                        <div class="subtitle">Location</div>
+                        <div class="title" id="location">test</div>
+                    </div>
+                    <div class="sepr"></div>
+                    <div class="info-block">
+                        <div class="subtitle">Timezone</div>
+                        <div class="title">UTC <span id="timezone">test</span></div>
+                    </div>
+                    <div class="sepr"></div>
+                    <div class="info-block">
+                        <div class="subtitle">ISP</div>
+                        <div class="title" id="isp">test</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer><h2>#02 project</h2></footer>
+    </div>
+
+    <script src="./src/index.js"></script>
+</body>
+</html>

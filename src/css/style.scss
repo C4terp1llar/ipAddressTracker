@@ -1,0 +1,149 @@
+// Шаблоны, миксины, переменные
+$default-val: 15px;
+$small-pd: 5px;
+$big-pd: 50px;
+$gap-default-val: 10px;
+
+$primary-color: chocolate;
+$darker-primary-color: darken($primary-color, 20%);
+$lighter-primary-color: lighten($primary-color, 20%);
+$contrast-primary-color: adjust-hue($primary-color, 50deg);
+
+$secondary-color: chartreuse;
+
+@mixin flexbox($direction: row, $justify: center, $align: center) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin media-query($breakpoint) {
+    @media screen and (min-width: $breakpoint) {
+        @content;
+    }
+}
+// 
+
+@font-face {
+    font-family: 'main';
+    src: url(../fonts/RobotoMono-VariableFont_wght.ttf);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body{
+    width: 100%; 
+    height: 100%;
+}
+body{
+    width: 100%; 
+    height: 100%;
+    font-family: 'main';
+    background-color: mintcream;
+    #root{
+        width: 100%; 
+        height: 100%;
+        display: grid;
+        font-family: main;
+        grid-template-rows: 100px 1fr 100px;
+        grid-template-columns: 1fr;
+        gap:$default-val;
+        header, footer{
+            background-color: $secondary-color;
+            @include flexbox();
+        }
+        header{
+            border-radius: 0 0 $default-val $default-val;
+        }
+        footer{
+            border-radius: $default-val $default-val 0 0;
+        }
+        main{
+            width: 100%; 
+            height: 100%;
+            background-color: $primary-color;
+            border-radius: $default-val;
+            @include flexbox(row, center, center);
+            .finder{
+                padding: $big-pd;
+                width: inherit;
+                height: inherit;
+                @include flexbox(column, start, center);
+                gap: $gap-default-val;
+                .search-bar{
+                    width: inherit;
+                    @include flexbox(row, center, center);
+                    input{
+                        border-width: 2px 0 2px 2px;
+                        border-color: $darker-primary-color;
+                        border-style: solid;
+                        width: 30%;
+                        height: 40px;
+                        border-radius: $default-val 0 0 $default-val;
+                    }
+                    input:focus{
+                        outline: none;
+                    }
+                    button{
+                        border-width: 2px 2px 2px 0;
+                        border-color: $darker-primary-color;
+                        border-style: solid;
+                        position: relative;
+                        background-color: $darker-primary-color;
+                        color: mintcream;
+                        width: 40px;
+                        height: 40px;
+                        cursor: pointer;
+                        transition: .5s;
+                        border-radius: 0 $default-val $default-val 0;
+                    }
+                    button:hover{
+                        background-color: $lighter-primary-color;
+                        color: black;
+                    }
+                    button::before{
+                        content: '\2192'; 
+                        position: absolute;
+                        transform: translateY(-50%);
+                        top: 45%;
+                        right: 25%;
+                        font-size: 18px;
+                    }
+                    input, button{
+                        padding: $small-pd;
+                    }
+                }
+                .info{
+                    width: inherit;
+                    @include flexbox(row, center, center);
+                    padding: $default-val;
+                    .info-block{
+                        width: 20%;
+                        padding: $default-val;
+                        @include flexbox(column, center, center);
+                        gap: $gap-default-val;
+                        .subtitle{
+                            font-weight: bold;
+                            font-size: 28px;
+                            color: $darker-primary-color;
+                        }
+                        .title{
+                            font-weight: bolder;
+                            font-size: 20px;
+                            color: mintcream;
+                        }
+                    }
+                    .sepr{
+                        height: 100%;
+                        width: 2px;
+                        background-color: $darker-primary-color;
+                    }
+                }
+            }
+        }
+    }
+}
