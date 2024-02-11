@@ -13,36 +13,39 @@
         <main>
             <div class="finder">
                 <div class="search-bar">
-                    <input type="text" name="ip" placeholder="Search for any IP address or domain">
+                    <input class="inp" type="text" placeholder="Search for any IP address or domain">
                     <button class="search-bar-btn"></button>
                 </div>
 
                 <div class="info">
+                    <div class="info-loader-block">
+                        <div class="loader"></div>
+                    </div>
                     <div class="info-block">
                         <div class="subtitle">IP Address</div>
-                        <div class="title" id="ip">test</div>
+                        <div class="title" id="ip"></div>
                     </div>
                     <div class="sepr"></div>
                     <div class="info-block">
                         <div class="subtitle">Location</div>
-                        <div class="title" id="location">test</div>
+                        <div class="title" id="location"></div>
                     </div>
                     <div class="sepr"></div>
                     <div class="info-block">
                         <div class="subtitle">Timezone</div>
-                        <div class="title">UTC <span id="timezone">test</span></div>
+                        <div class="title" id="timezone"></div>
                     </div>
                     <div class="sepr"></div>
                     <div class="info-block">
                         <div class="subtitle">ISP</div>
-                        <div class="title" id="isp">test</div>
+                        <div class="title" id="isp"></div>
                     </div>
                 </div>
             </div>
         </main>
         <footer><h2>#02 project</h2></footer>
     </div>
-
+    <div class="error-box"></div>
     <script src="./src/index.js"></script>
 </body>
 </html>

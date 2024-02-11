@@ -118,13 +118,42 @@ body{
                     }
                 }
                 .info{
+                    position: relative;
                     width: inherit;
-                    @include flexbox(row, center, center);
+                    @include flexbox(row, center, unset);
                     padding: $default-val;
+                    .info-loader-block{
+                        top: 0;
+                        left: 0;
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background-color: chocolate;
+                        border-radius: $default-val;
+                        border: 2px solid $darker-primary-color;
+                        @include flexbox(row, center, center);
+                        display: none;
+                        .loader {
+                            border: 5px solid $darker-primary-color;
+                            border-top: 5px solid $lighter-primary-color;
+                            border-radius: 50%;
+                            width: 25px;
+                            height: 25px;
+                            animation: spin 1s linear infinite;
+                            display: block;
+                        }
+                        @keyframes spin {
+                            0% { transform: rotate(0deg); }
+                            100% { transform: rotate(360deg); }
+                        }
+                    }
+                    .active-loader{
+                        display: flex;
+                    }
                     .info-block{
                         width: 20%;
                         padding: $default-val;
-                        @include flexbox(column, center, center);
+                        @include flexbox(column, unset, center);
                         gap: $gap-default-val;
                         .subtitle{
                             font-weight: bold;
@@ -135,6 +164,7 @@ body{
                             font-weight: bolder;
                             font-size: 20px;
                             color: mintcream;
+                            text-align: center;
                         }
                     }
                     .sepr{
@@ -145,5 +175,30 @@ body{
                 }
             }
         }
+    }
+    .error-box{
+        position: fixed;
+        bottom: 10px;
+        right: -10px;
+    
+        padding: 15px;
+        border-radius: 10px;
+        background-color: black;
+        color: red;
+    
+        display: flex;
+        gap: 10px;
+    
+        visibility: hidden;
+        opacity: 0;
+        transition: .5s;
+    
+        cursor: pointer;
+    }
+    .show {
+        right: 10px;
+        visibility: visible;
+        opacity: 1;
+        transition: .5s;
     }
 }
