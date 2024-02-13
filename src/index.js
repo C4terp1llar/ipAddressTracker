@@ -1,4 +1,9 @@
-import {isIpValid, alertError, printData} from './helpers/entry-point';
+import 'babel-polyfill' 
+/*добавление полифила для экспорта/импорта async-await (вполне возможно, что данный полифил не нужен, тк
+видимо в текущей версии сборщика Parcel его нет В code splitting И никаких ошибок при экспорте феча не появляется )*/
+import {fetchData, isIpValid, alertError, printData, mapFuncs} from './helpers/entry-point';
+
+mapFuncs.initMap();
 
 const ipInput = document.querySelector('.inp');
 const btn = document.querySelector('.search-bar-btn');
@@ -10,13 +15,14 @@ function getData (){
     if (isIpValid(ipInput.value.trim())){
         document.querySelector('.info-loader-block').classList.add('active-loader');
 
-        fetch(`https://geo.ipify.org/api/v2/country?apiKey=at_7kjmfMwSj7ROyCqfIMa74S30OyUj8&ipAddress=${ipInput.value.trim()}`)
-            .then(response => response.json())
+        fetchData(ipInput.value.trim())
             .then(data => {
-                if (data.isp === ""){
+                if (data.data.range_type.type !== 'PUBLIC'){
                     throw new Error('The entered IP is local and only available within private networks');
                 }
-                printData(data)
+
+                printData(data.data);
+                mapFuncs.changeMap(data.data.location.latitude, data.data.location.longitude);
             })
             .catch(error => {
                 alertError(error.message);
@@ -29,9 +35,10 @@ function getData (){
         alertError(error);
     }
     /*
-        оказалось, что при локальных ip API возвращает resolve в виде неполного объекта с некоторыми пустыми полями 
+        оказалось, что при локальных ip API возвращает resolve в виде неполного объекта с некоторыми пустыми полями (+ изначальный API не возвращал широту и долготу по ip,
+            пожтому заменил его на ipbase)
         (например при 192.168.0.102 - все кроме ip В возвращаемом джейсоне = "" (country мб ZZ)),
-        поэтому сделал условие по пустоте isp 
+        поэтому сделал условие по частным сетям (новое API)
     */
 }
 
@@ -40,3 +47,4 @@ function handleKeydown (e){
         getData();
     }
 }
+

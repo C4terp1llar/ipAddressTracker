@@ -67,11 +67,11 @@ body{
             height: 100%;
             background-color: $primary-color;
             border-radius: $default-val;
-            @include flexbox(row, center, center);
+            @include flexbox(column, space-between, center);
+            padding: $big-pd;
+            gap: $gap-default-val;
             .finder{
-                padding: $big-pd;
                 width: inherit;
-                height: inherit;
                 @include flexbox(column, start, center);
                 gap: $gap-default-val;
                 .search-bar{
@@ -84,6 +84,14 @@ body{
                         width: 30%;
                         height: 40px;
                         border-radius: $default-val 0 0 $default-val;
+                        @media screen and (max-width: 767px) {
+                            width: 50%;
+
+                        }
+                        @media screen and (max-width: 520px) {
+                            width: 80%;
+
+                        }
                     }
                     input:focus{
                         outline: none;
@@ -104,6 +112,13 @@ body{
                     button:hover{
                         background-color: $lighter-primary-color;
                         color: black;
+
+                    }
+                    @media (hover: none) and (pointer: coarse) {
+                        button:hover {
+                            background-color: $darker-primary-color;
+                            color: mintcream;
+                        }
                     }
                     button::before{
                         content: '\2192'; 
@@ -120,8 +135,15 @@ body{
                 .info{
                     position: relative;
                     width: inherit;
-                    @include flexbox(row, center, unset);
+                    display: grid;
+                    grid-template-columns: repeat(4, 20%);
+                    grid-template-rows: 1fr;
+                    justify-content: center;
                     padding: $default-val;
+                    @media screen and (max-width: 1023px) {
+                        grid-template-columns: repeat(2, 45%);
+                        grid-template-rows: repeat(2, 1fr);
+                    }
                     .info-loader-block{
                         top: 0;
                         left: 0;
@@ -151,20 +173,31 @@ body{
                         display: flex;
                     }
                     .info-block{
-                        width: 20%;
                         padding: $default-val;
                         @include flexbox(column, unset, center);
                         gap: $gap-default-val;
                         .subtitle{
                             font-weight: bold;
-                            font-size: 28px;
+                            font-size: 24px;
                             color: $darker-primary-color;
+                            @media screen and (max-width: 767px) {
+                                font-size: 20px;
+                            }
+                            @media screen and (max-width: 520px) {
+                                font-size: 12px;
+                            }
                         }
                         .title{
                             font-weight: bolder;
-                            font-size: 20px;
+                            font-size: 16px;
                             color: mintcream;
                             text-align: center;
+                            @media screen and (max-width: 767px) {
+                                font-size: 12px;
+                            }
+                            @media screen and (max-width: 520px) {
+                                font-size: 8px;
+                            }
                         }
                     }
                     .sepr{
@@ -173,6 +206,12 @@ body{
                         background-color: $darker-primary-color;
                     }
                 }
+            }
+            #map{
+                width: inherit;
+                height: 100%;
+                min-height: 300px;
+                border-radius: $default-val;
             }
         }
     }
